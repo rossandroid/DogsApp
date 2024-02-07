@@ -1,4 +1,4 @@
-package com.rm.dogsapp
+package com.rm.dogsapp.ui.dog
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
