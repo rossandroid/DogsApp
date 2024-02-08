@@ -6,11 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rm.dogsapp.model.DogRepository
 import com.rm.dogsapp.model.response.DogBreedResponse
+import com.rm.dogsapp.model.response.DogImageDetail
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class DogViewModel (private val repository: DogRepository = DogRepository()): ViewModel() {
+class DogViewModel (): ViewModel() {
     private val breedsJob = Job()
     init{
         viewModelScope.launch(Dispatchers.IO) {
@@ -26,6 +27,7 @@ class DogViewModel (private val repository: DogRepository = DogRepository()): Vi
     }
 
     suspend fun getBreedsList(): List<DogBreedResponse> {
-        return repository.getDogBreeds()
+        return DogRepository.getInstance().getDogBreeds()
     }
+
 }
